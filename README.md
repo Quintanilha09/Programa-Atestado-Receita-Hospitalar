@@ -1,2 +1,2 @@
 # Programa-de-Atestado-Medico
-Programa no Qual é Possível Resgatar um Atestado Online.
+Programa no Qual é Possível Resgatar um Atestado ou Receita Online.
