@@ -43,7 +43,7 @@
     /*DENTRO DESSE IF VAI AS OPÇÕES DE LOGIN*/
     if((cpf == 40028922) && (nascimento == 25092002))
     {
-        printf("SEJA BEM-VINDO FULANO!");
+        printf("SEJA BEM-VINDO!");
 
         /*PARTE DAS OPÇÕES*/
         printf("\nOPÇÕES\n");
