@@ -4,7 +4,7 @@
 #include <time.h>
 	main()
 	{
-     setlocale(LC_ALL, "Portuguese");
+    setlocale(LC_ALL, "Portuguese");
     
     float cpf; 
     int nascimento, receitas;
@@ -131,7 +131,7 @@
                     printf("CRM do Médico: %i\n", crmMedico);
                     printf("__________________________________________________________________ Data: %i\n\n", dataConsulta);
                     
-                    printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
+                    printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
         		    scanf("%i", &opcaoEnviorec);
 				
                     if (opcaoEnviorec == 1)
@@ -161,7 +161,7 @@
                     printf("Nome do Médico: Matheus Jackson.\n");
                     printf("CRM do Médico: %i\n", crmMedico);
                     printf("________________________________________________________________________________ Data: %i\n\n", dataConsulta);
-                    printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
+                    printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
                     if (opcaoEnviorec == 1)
@@ -191,7 +191,7 @@
                     printf("Nome do Médico: Mirian Abravanel.\n");
                     printf("CRM do Médico: %i\n", crmMedico);
                     printf("____________________________________________________________________________________ Data: %i\n\n", dataConsulta);
-                    printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
+                    printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
                     if (opcaoEnviorec == 1)
@@ -221,7 +221,7 @@
                     printf("Nome do Médico: Ervin Parker.\n");
                     printf("CRM do Médico: %i\n", crmMedico);
                     printf("_________________________________________________________________________ Data: %i\n\n", dataConsulta);
-                    printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
+                    printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
                     if (opcaoEnviorec == 1)
@@ -252,7 +252,7 @@
                     printf("Nome do Médico: Kobe Stark\n");
                     printf("CRM do Médico: %i\n", crmMedico);
                     printf("_________________________________________________________________________________ Data: %i\n\n", dataConsulta);
-                    printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
+                    printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
                     if (opcaoEnviorec == 1)
