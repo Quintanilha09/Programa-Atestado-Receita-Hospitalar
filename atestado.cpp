@@ -8,8 +8,9 @@
     
     float cpf; 
     int nascimento, receitas;
-    int opcao, crmMedico, dataConsulta, opcaoEnvio, opcaoEnviorec;
+    int opcao, crmMedico, opcaoEnvio, opcaoEnviorec;
 	char nomePaciente[50], nomeHospital[50];
+    int dataConsulta, dia, mes, ano;
 
     /*PARTE DO LOGIN*/
     
@@ -66,9 +67,12 @@
 		    	
 		    	printf("Insira o CRM do medico: ");
 		    	scanf("%i", &crmMedico);
-		    	
-		    	printf("Data da Consulta (DDMMAAA): ");
-		    	scanf("%i", &dataConsulta);
+
+                printf("Data da Consulta (DDMMAAA): ");
+		    	scanf("%d", &dataConsulta);
+		    	dia = (dataConsulta / 1000000) % 100;
+	 			mes = (dataConsulta / 10000) % 100;
+	 			ano = dataConsulta % 10000;
 		    	
 		    	printf("Nome do Hospital: ");
 		    	setbuf(stdin, 0);
@@ -86,7 +90,7 @@
 	            printf("Inscrito no CPF sob o nº %.0f\n", cpf);
 	            printf("____________________________________________________________________________\n");
                 printf("Não se encontra em condições para o trabalho e estudos, por motivo de doença.\nDevendo seu afastamento ser considerado de ");
-                printf("%i a 01/09/2022\n", dataConsulta);
+                printf("%02d/%02d/%04d a %02d/%02d/%04d\n", dia, mes, ano, dia + 5, mes, ano);
                 printf("____________________________________________________________________________\n\n");
                 
                 printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
@@ -281,12 +285,6 @@
             break;
 	    }
         
-            
-    
-	}
-
-	
-
-
+    }
 
 }
