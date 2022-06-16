@@ -6,7 +6,7 @@
 	{
     setlocale(LC_ALL, "Portuguese");
     
-    float cpf; 
+    int cpf; 
     int nascimento, receitas;
     int opcao, crmMedico, opcaoEnvio, opcaoEnviorec;
 	char nomePaciente[50], nomeHospital[50];
@@ -17,25 +17,25 @@
     
     printf("______________________________\n");
     printf("DIGITE SEU CPF: ");
-    scanf("%f", &cpf);
+    scanf("%i", &cpf);
 
     printf("DIGITE SUA DATA DE NASCIMENTO: ");
     scanf("%i", &nascimento);
-    printf("______________________________\n\n");
+    printf("_____________________________________________\n\n");
     
     while ((cpf != 40028922) || (nascimento != 25092002)){
     	
     	printf("Usuário ou senha incorretos. Tente novamente.\n");
     	
-    	printf("______________________________\n");
+    	printf("_____________________________________________\n");
     	printf("LOGIN\n\n");
 
     	printf("DIGITE SEU CPF: ");
-    	scanf("%f", &cpf);
+    	scanf("%i", &cpf);
 
     	printf("DIGITE SUA DATA DE NASCIMENTO: ");
     	scanf("%i", &nascimento);
-    	printf("______________________________\n\n");
+    	printf("_____________________________________________\n\n");
     	
 	}
     
@@ -79,45 +79,74 @@
 		   		fgets(nomeHospital, 50, stdin);
 		    
 		     	/*Declaração de atestado*/
-			 if (opcao == 1)
-            {	
-                printf("__________________________________________________\n");
-                printf("**************************\nDECLARAÇÃO DE ATESTADO\n**************************\n");
-                printf("Hospital: %s", nomeHospital);
-                printf("__________________________________________________\n");
-	            printf("Declaro que %s\n", nomePaciente);
-	            
-	            printf("Inscrito no CPF sob o nº %.0f\n", cpf);
-	            printf("____________________________________________________________________________\n");
-                printf("Não se encontra em condições para o trabalho e estudos, por motivo de doença.\nDevendo seu afastamento ser considerado de ");
-                printf("%02d/%02d/%04d a %02d/%02d/%04d\n", dia, mes, ano, dia + 5, mes, ano);
-                printf("____________________________________________________________________________\n\n");
-                
-                printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
-        		scanf("%i", &opcaoEnvio);
-				
-            	if (opcaoEnvio == 1)
-            	{
-    	    		printf("Insira o email do destinatário: ");
-    	    		setbuf(stdin, 0);
-    	    		char emailDestinatario[40];
-    	    		fgets(emailDestinatario, 40, stdin);	
-    	    
-    	    		printf("Email enviado com sucesso!\nDestinatário: %s", emailDestinatario);
-    	    		printf("Obrigado! Volte sempre.");
+                if (opcao == 1)
+                {
+                    /*parte que vai mexer com as datas*/
+                    if (dia + 5 <= 31)
+                    {
+                        printf("_________________________________________________\n");
+                        printf("*******************\nDECLARAÇÃO DE ATESTADO\n*******************\n");
+                        printf("Hospital: %s", nomeHospital);
+                        printf("_________________________________________________\n");
+                        printf("Declaro que %s\n", nomePaciente);  
+                        printf("Inscrito no CPF sob o nº %i\n", cpf);
+                        printf("_____________________________________________________________________________\n");
+                        printf("Não se encontra em condições para o trabalho e estudos, por motivo de doença.\nDevendo seu afastamento ser considerado de ");
+                        printf("%02d/%02d/%04d a %02d/%02d/%04d\n", dia, mes, ano, dia + 5, mes, ano);
+                        printf("_____________________________________________________________________________\n\n");
+                    } else if (dia + 5 > 31 && mes + 1 <= 12)
+                    {
+                        printf("_________________________________________________\n");
+                        printf("*********\nDECLARAÇÃO DE ATESTADO\n*********\n");
+                        printf("Hospital: %s", nomeHospital);
+                        printf("_________________________________________________\n");
+                        printf("Declaro que %s\n", nomePaciente);  
+                        printf("Inscrito no CPF sob o nº %i\n", cpf);
+                        printf("____________________________________________________________________________\n");
+                        printf("Não se encontra em condições para o trabalho e estudos, por motivo de doença.\nDevendo seu afastamento ser considerado de ");
+                        printf("%02d/%02d/%04d a %02d/%02d/%04d\n", dia, mes, ano, (dia + 5) - 31, mes + 1, ano);
+                        printf("____________________________________________________________________________\n\n");
+                    } else if(mes == 12 && (dia + 5) > 31){
+                        printf("_________________________________________________\n");
+                        printf("*********\nDECLARAÇÃO DE ATESTADO\n*********\n");
+                        printf("Hospital: %s", nomeHospital);
+                        printf("_________________________________________________\n");
+                        printf("Declaro que %s\n", nomePaciente);  
+                        printf("Inscrito no CPF sob o nº %i\n", cpf);
+                        printf("_____________________________________________________________________________\n");
+                        printf("Não se encontra em condições para o trabalho e estudos, por motivo de doença.\nDevendo seu afastamento ser considerado de ");
+                        printf("%02d/%02d/%04d a %02d/%02d/%04d\n", dia, mes, ano, (dia + 5) - 31, (mes + 1) - 12, ano + 1);
+                        printf("_____________________________________________________________________________\n\n");
+                    }
                     
-            	}else{
-            		printf("Obrigado pela preferência.");
-            	
-				}
-			}
-		    break;
+                    printf("\n\nDeseja enviar o atestado? Sim[1] Nao[2]: ");
+                    scanf("%i", &opcaoEnvio);
+                        
+                    if (opcaoEnvio == 1)
+                    {
+                        printf("Insira o email do destinatário: ");
+                        setbuf(stdin, 0);
+                        char emailDestinatario[40];
+                        fgets(emailDestinatario, 40, stdin);	
+                
+                        printf("Email enviado com sucesso!\nDestinatário: %s", emailDestinatario);
+                        printf("Obrigado! Volte sempre.");
+                        
+                    }else{
+                        printf("Obrigado pela preferência.");
+                    
+                    }
+                }
+                break;
 
             case 2:
             	printf("Insira o CRM do Medico: ");	
             	scanf("%i", &crmMedico);
             	printf("Data da consulta (DDMMAAA): ");
             	scanf("%i", &dataConsulta);
+                dia = (dataConsulta / 1000000) % 100;
+	 			mes = (dataConsulta / 10000) % 100;
+	 			ano = dataConsulta % 10000;
             	
                 srand(time(NULL));
                 receitas = rand() % 5;
@@ -133,7 +162,7 @@
                     printf("NÃO TOMAR MAIS DO QUE O EXIGIDO NA RECEITA.\n\n");
                     printf("Nome do Médico: Gustavo Pinto.\n");
                     printf("CRM do Médico: %i\n", crmMedico);
-                    printf("__________________________________________________________________ Data: %i\n\n", dataConsulta);
+                    printf("__________________________________________________________________ Data: %02d/%02d/%04d\n\n", dia, mes, ano);
                     
                     printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
         		    scanf("%i", &opcaoEnviorec);
@@ -164,7 +193,7 @@
                     printf("NÃO TOMAR MAIS DO QUE O EXIGIDO NA RECEITA.\n\n");
                     printf("Nome do Médico: Matheus Jackson.\n");
                     printf("CRM do Médico: %i\n", crmMedico);
-                    printf("________________________________________________________________________________ Data: %i\n\n", dataConsulta);
+                    printf("________________________________________________________________________________ Data: %02d/%02d/%04d\n\n", dia, mes, ano);
                     printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
@@ -194,7 +223,7 @@
                     printf("NÃO TOMAR MAIS DO QUE O EXIGIDO NA RECEITA.\n\n");
                     printf("Nome do Médico: Mirian Abravanel.\n");
                     printf("CRM do Médico: %i\n", crmMedico);
-                    printf("____________________________________________________________________________________ Data: %i\n\n", dataConsulta);
+                    printf("____________________________________________________________________________________ Data: %02d/%02d/%04d\n\n", dia, mes, ano);
                     printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
@@ -224,7 +253,7 @@
                     printf("NÃO TOMAR MAIS DO QUE O EXIGIDO NA RECEITA.\n\n");
                     printf("Nome do Médico: Ervin Parker.\n");
                     printf("CRM do Médico: %i\n", crmMedico);
-                    printf("_________________________________________________________________________ Data: %i\n\n", dataConsulta);
+                    printf("__________________________________________________________________________ Data: %02d/%02d/%04d\n\n", dia, mes, ano);
                     printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
@@ -255,7 +284,7 @@
                     printf("NÃO TOMAR MAIS DO QUE O EXIGIDO NA RECEITA.\n\n");
                     printf("Nome do Médico: Kobe Stark\n");
                     printf("CRM do Médico: %i\n", crmMedico);
-                    printf("_________________________________________________________________________________ Data: %i\n\n", dataConsulta);
+                    printf("_________________________________________________________________________________ Data: %02d/%02d/%04d\n\n", dia, mes, ano);
                     printf("\n\nDeseja enviar a receita? Sim[1] Nao[2]: ");
                     scanf("%i", &opcaoEnviorec);
                     
