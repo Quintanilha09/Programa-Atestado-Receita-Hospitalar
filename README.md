@@ -4,5 +4,5 @@ Primeiro Semestre, faculdade (ADS).
 Programa no Qual é Possível Resgatar um Atestado ou Receita Online.
 
 Desenvolvedores:
-Gabriel Quintanilha,\n
+Gabriel Quintanilha,
 Matheus Oliveira.
