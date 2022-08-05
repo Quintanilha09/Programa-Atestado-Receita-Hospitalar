@@ -1,4 +1,4 @@
-# Atestado Online
+# Atestado Virtual
 
 ## 1.Descrição do projeto:
 Esse programa é um trabalho de Faculdade feito em C, com o objetivo de resolver um problema da vida real, como por exemplo resgatar atestados online.
